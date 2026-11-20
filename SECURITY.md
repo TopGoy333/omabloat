@@ -2,7 +2,10 @@
 
 ## Supported Versions
 
+docs/security-policy
+
 docs/explain-bloat-detector
+main
 omabloat is a small set of shell scripts, not a versioned application. Only the
 latest `main` branch receives fixes.
 
@@ -45,6 +48,8 @@ What to expect:
   and confirmation, and protect core apps.
 - This project publishes no secret keys. Do not paste credentials into issues,
   advisories or pull requests.
+docs/security-policy
+
   
 Use this section to tell people about which versions of your project are
 currently being supported with security updates.
@@ -64,3 +69,4 @@ Tell them where to go, how often they can expect to get an update on a
 reported vulnerability, what to expect if the vulnerability is accepted or
 declined, etc.
  main
+main
