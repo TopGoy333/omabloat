@@ -2,6 +2,7 @@
 
 ## Supported Versions
 
+docs/explain-bloat-detector
 omabloat is a small set of shell scripts, not a versioned application. Only the
 latest `main` branch receives fixes.
 
@@ -44,3 +45,22 @@ What to expect:
   and confirmation, and protect core apps.
 - This project publishes no secret keys. Do not paste credentials into issues,
   advisories or pull requests.
+  
+Use this section to tell people about which versions of your project are
+currently being supported with security updates.
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 5.1.x   | :white_check_mark: |
+| 5.0.x   | :x:                |
+| 4.0.x   | :white_check_mark: |
+| < 4.0   | :x:                |
+
+## Reporting a Vulnerability
+
+Use this section to tell people how to report a vulnerability.
+
+Tell them where to go, how often they can expect to get an update on a
+reported vulnerability, what to expect if the vulnerability is accepted or
+declined, etc.
+ main
