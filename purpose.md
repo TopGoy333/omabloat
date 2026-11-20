@@ -41,8 +41,9 @@ gives you a baseline; running it again after setup shows what changed. That
 - Nothing with secret keys is published.
 - Every removal step elsewhere is explicit and confirmed.
 
-## Known limitation
+## Detection accuracy
 
-The current uploaded detector can miss installed packages because of how it
-matches `pacman -Qs` output. A corrected copy lives in omababy; this repo's
-script is left as uploaded while the explanatory files are improved.
+The detector uses exact `pacman -Q` checks, so installed candidates are reported
+reliably. An earlier version matched `pacman -Qs` output and could miss installed
+packages; that is fixed. The home-directory scan is time-bounded so a large
+archive cannot hang the report.

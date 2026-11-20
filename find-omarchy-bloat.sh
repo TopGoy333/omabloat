@@ -6,6 +6,7 @@ set -euo pipefail
 
 VERBOSE=0
 SPACE_ONLY=0
+DU_DEPTH=1
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -14,6 +15,8 @@ while [[ $# -gt 0 ]]; do
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
 done
+
+if [[ $VERBOSE -eq 1 ]]; then DU_DEPTH=2; fi
 
 # Omarchy-specific preinstall packages (from base.packages + common additions)
 OMARCHY_BLOAT=(
@@ -53,7 +56,7 @@ echo "────────────────────────�
 
 BLOAT_FOUND=0
 for pkg in "${OMARCHY_BLOAT[@]}"; do
-    if pacman -Qs "$pkg" 2>/dev/null | grep -q "^$pkg "; then
+    if pacman -Q "$pkg" >/dev/null 2>&1; then
         echo "[FOUND] $pkg"
         BLOAT_FOUND=1
     fi
@@ -89,7 +92,7 @@ echo "────────────────────────�
 
 if command -v du &>/dev/null; then
     # Limit output to avoid overwhelming, focus on large dirs
-    du -h --max-depth=2 "$HOME" 2>/dev/null | sort -rh | head -10 || echo "Could not scan home directory."
+    timeout 20 du -h --max-depth="$DU_DEPTH" "$HOME" 2>/dev/null | sort -rh | sed -n '1,10p' || echo "Home scan skipped (too large or timed out)."
 fi
 echo ""
 
@@ -131,9 +134,9 @@ if [[ $SPACE_ONLY -eq 1 ]]; then
     echo "─────────────────────────────────────────────────────────────"
     
     for pkg in "${OMARCHY_BLOAT[@]}"; do
-        if pacman -Qs "$pkg" 2>/dev/null | grep -q "^$pkg "; then
+        if pacman -Q "$pkg" >/dev/null 2>&1; then
             # Get package size from pacman database
-            PKG_SIZE=$(pacman -Qi "$pkg" 2>/dev/null | grep "Installed Size" | awk '{print $4}' || echo "?")
+            PKG_SIZE=$(pacman -Qi "$pkg" 2>/dev/null | grep "Installed Size" | awk '{print $4, $5}' || echo "?")
             if [[ "$PKG_SIZE" != "?" && "$PKG_SIZE" != "" ]]; then
                 echo "$pkg: $PKG_SIZE"
             fi
@@ -150,7 +153,7 @@ if [[ $SPACE_ONLY -eq 1 ]]; then
     # Check .local/share for web app data
     WEB_DATA_DIR="$HOME/.local/share"
     if [[ -d "$WEB_DATA_DIR" ]]; then
-        du -h --max-depth=1 "$WEB_DATA_DIR" 2>/dev/null | sort -rh | head -5 || true
+        du -h --max-depth=1 "$WEB_DATA_DIR" 2>/dev/null | sort -rh | sed -n '1,5p' || true
     fi
     
     echo ""

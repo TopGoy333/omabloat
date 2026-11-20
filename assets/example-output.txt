@@ -1,0 +1,47 @@
+╔══════════════════════════════════════════════════════════╗
+║  Omarchy Bloatware Detection Report                      ║
+╚══════════════════════════════════════════════════════════╝
+
+📦 Checking for preinstalled bloatware packages...
+─────────────────────────────────────────────────────────────
+[FOUND] kdenlive
+[FOUND] obs-studio
+[FOUND] xournalpp
+[FOUND] evince
+[FOUND] chromium
+[FOUND] omasnap
+[FOUND] ttf-ia-writer
+[FOUND] ttf-jetbrains-mono-nerd-basic
+[FOUND] docker
+[FOUND] docker-buildx
+[FOUND] docker-compose
+[FOUND] lazydocker
+[FOUND] moonlight-qt
+
+🌐 Checking for web app launchers...
+─────────────────────────────────────────────────────────────
+No web app launchers detected.
+💾 Top disk consumers in home directory:
+─────────────────────────────────────────────────────────────
+225M	~
+120M	~/Videos
+64M	~/.cache
+40M	~/Downloads
+0	~/Games
+0	~/Documents
+
+🗑️  Orphaned/unneeded packages:
+─────────────────────────────────────────────────────────────
+No orphaned packages found.
+
+🖥️  Unused GUI utilities (if you prefer terminal):
+─────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════
+📋 Recommendations:
+─────────────────────────────────────────────────────────────
+- Remove unwanted packages via Omarchy menu → Remove → Package
+- Or run: sudo pacman -Rns <package-name>
+- Docker storage: 8 (run 'docker system prune' to clean)
+
+═══════════════════════════════════════════════════════════
