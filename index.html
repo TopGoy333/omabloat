@@ -37,6 +37,10 @@
   <h1>omabloat</h1>
   <p class="tag">A read-only bloat detector for Omarchy (and plain Arch). Make Omarchy accessible to the average PC user.</p>
 
+  <h2>See it working</h2>
+  <p><img src="assets/demo.png" alt="Example bloat report" style="max-width:100%; border:1px solid #2a2f3a; border-radius:8px"></p>
+  <p class="tag">Example run on a demo machine; the home directory is shown as <code>~</code>.</p>
+
   <h2>The main file</h2>
   <p>
     <a href="https://github.com/TopGoy333/omabloat/blob/main/find-omarchy-bloat.sh"><code>find-omarchy-bloat.sh</code></a>
@@ -83,13 +87,12 @@
     Removal is a separate, opt-in step.
   </div>
 
-  <h2>Known limitation</h2>
-  <div class="note warn">
-    The current uploaded version matches <code>pacman -Qs</code> output with
-    <code>grep "^pkg "</code>, but those lines start with <code>local/</code>, so
-    installed packages can be missed. A corrected copy lives in
-    <a href="https://github.com/TopGoy333/omababy">omababy</a>. This page and the
-    other docs explain the script; the script itself is unchanged here.
+  <h2>Detection accuracy</h2>
+  <div class="note">
+    The package check uses exact <code>pacman -Q</code> queries, so installed
+    candidates are reported reliably. An earlier version matched
+    <code>pacman -Qs</code> output and could miss installed packages; that is
+    fixed. The home scan is time-bounded so a large archive cannot hang it.
   </div>
 
   <h2>Companion: actually removing bloat</h2>
