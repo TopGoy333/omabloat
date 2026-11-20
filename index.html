@@ -1,1 +1,108 @@
-this is for a test. i expect this file to be an actual html file that can be read on a web browser that shows the information of the repo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>omabloat — find Omarchy bloat, safely</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0; padding: 2rem 1rem; line-height: 1.6;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #11141a; color: #e6e6e6;
+    }
+    main { max-width: 52rem; margin: 0 auto; }
+    h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+    h2 { font-size: 1.3rem; margin-top: 2rem; border-bottom: 1px solid #2a2f3a; padding-bottom: .3rem; }
+    .tag { color: #9aa4b2; font-size: .95rem; }
+    a { color: #7fb4ff; }
+    code, pre { font-family: ui-monospace, "JetBrains Mono", monospace; }
+    pre {
+      background: #1a1f29; border: 1px solid #2a2f3a; border-radius: 8px;
+      padding: .9rem 1rem; overflow-x: auto;
+    }
+    code { background: #1a1f29; padding: .1rem .35rem; border-radius: 4px; }
+    pre code { background: none; padding: 0; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #2a2f3a; padding: .5rem .7rem; text-align: left; }
+    th { background: #1a1f29; }
+    .note { background: #1c2330; border-left: 4px solid #7fb4ff; padding: .8rem 1rem; border-radius: 4px; }
+    .warn { border-left-color: #e0b341; }
+    ul { padding-left: 1.2rem; }
+    footer { margin-top: 3rem; color: #9aa4b2; font-size: .9rem; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>omabloat</h1>
+  <p class="tag">A read-only bloat detector for Omarchy (and plain Arch). Make Omarchy accessible to the average PC user.</p>
+
+  <h2>The main file</h2>
+  <p>
+    <a href="https://github.com/TopGoy333/omabloat/blob/main/find-omarchy-bloat.sh"><code>find-omarchy-bloat.sh</code></a>
+    is the heart of this repo. It <strong>detects</strong> bloat and reports it.
+    It does <strong>not</strong> remove anything, so it is safe to run at any time.
+  </p>
+
+  <h2>Quick start</h2>
+  <pre><code>chmod +x find-omarchy-bloat.sh
+./find-omarchy-bloat.sh              # full read-only report
+./find-omarchy-bloat.sh --space-only # adds sizes for the candidates
+./find-omarchy-bloat.sh --verbose    # deeper home-directory scan</code></pre>
+
+  <h2>What the report shows</h2>
+  <ul>
+    <li>Preinstalled bloat candidates: office suites, media editors, Chromium web-app wrappers, optional services like Docker.</li>
+    <li>Web-app launchers in <code>~/.local/share/applications</code> (Discord, YouTube, …).</li>
+    <li>The biggest folders in your home directory.</li>
+    <li>Orphaned packages (<code>pacman -Qdtq</code>) — installed but no longer required.</li>
+    <li>Graphical utilities you may not need if you live in the terminal.</li>
+    <li>With <code>--space-only</code>: how much disk each candidate uses.</li>
+    <li>Recommendations — printed as suggestions, never executed.</li>
+  </ul>
+
+  <h2>The first-and-last rule</h2>
+  <p>
+    Run it <strong>first</strong> (right after a fresh install, before adding apps)
+    and <strong>last</strong> (after your full setup and cleanup). Compare the two
+    reports to see exactly what you added and whether anything unwanted came back.
+  </p>
+
+  <h2>Files</h2>
+  <table>
+    <tr><th>File</th><th>What it is</th></tr>
+    <tr><td><a href="https://github.com/TopGoy333/omabloat/blob/main/find-omarchy-bloat.sh">find-omarchy-bloat.sh</a></td><td>The main read-only detector.</td></tr>
+    <tr><td><a href="https://github.com/TopGoy333/omabloat/blob/main/purpose.md">purpose.md</a></td><td>Why this repo exists and how the pieces fit together.</td></tr>
+    <tr><td><a href="https://github.com/TopGoy333/omabloat/blob/main/README.md">README.md</a></td><td>Quick-start and file map.</td></tr>
+  </table>
+
+  <h2>Safety</h2>
+  <div class="note">
+    Read-only: no <code>pacman -R</code>, no <code>rm</code>, no service changes.
+    It only prints commands you <em>could</em> run — you stay in control.
+    Removal is a separate, opt-in step.
+  </div>
+
+  <h2>Known limitation</h2>
+  <div class="note warn">
+    The current uploaded version matches <code>pacman -Qs</code> output with
+    <code>grep "^pkg "</code>, but those lines start with <code>local/</code>, so
+    installed packages can be missed. A corrected copy lives in
+    <a href="https://github.com/TopGoy333/omababy">omababy</a>. This page and the
+    other docs explain the script; the script itself is unchanged here.
+  </div>
+
+  <h2>Companion: actually removing bloat</h2>
+  <p>
+    Detection is step one. For safe, reversible cleanup with a guard list and
+    confirmation prompts, see
+    <a href="https://github.com/TopGoy333/omababy/blob/main/debloat-omarchy.md">debloat-omarchy.sh</a>
+    in omababy. Nothing runs freely — you always choose.
+  </p>
+
+  <footer>
+    omabloat · part of a learning project to make Omarchy approachable. We love Linux and open source.
+  </footer>
+</main>
+</body>
+</html>
