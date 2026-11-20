@@ -1,3 +1,4 @@
+docs/explain-bloat-detector
 # omabloat
 
 A small, **read-only** helper for finding bloat on [Omarchy](https://omarchy.org/)
@@ -11,12 +12,12 @@ still available.
 This is the heart of the repo. It **detects** bloat; it does **not** remove
 anything. Running it is safe at any time.
 
-```bash
+bash
 chmod +x find-omarchy-bloat.sh
 ./find-omarchy-bloat.sh              # full read-only report
 ./find-omarchy-bloat.sh --space-only # adds sizes for the candidates
 ./find-omarchy-bloat.sh --verbose    # deeper home-directory scan
-```
+
 
 ### What the report shows
 
@@ -64,3 +65,6 @@ Detection is step one. For safe, reversible cleanup with a guard list and
 confirmation prompts, see
 [`debloat-omarchy.sh`](https://github.com/TopGoy333/omababy/blob/main/debloat-omarchy.md)
 in omababy. Nothing here runs freely — you always choose.
+
+As a new omarchy user I created a script to find bloat that is read only. i would love some collaboration as i am just getting started so message me if you'd like
+ main
