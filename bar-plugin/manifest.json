@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "topgoy333.omabloat",
+  "name": "Omabloat",
+  "version": "1.0.0",
+  "author": "TopGoy333",
+  "license": "MIT",
+  "description": "Read-only Omarchy bloat detector with a bar button; cleanup and Steam tools live in the same repo.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Omabloat",
+    "description": "Find bloat on Omarchy. Opens a panel that runs the read-only scan in your terminal.",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}

@@ -3,7 +3,8 @@
 MAKE OMARCHY ACCESSIBLE to the average PC user — and teach people about
 plugins and their own software along the way.
 
-This repo is the **detection** half of that goal. The main file,
+This repo does three things: **detect** bloat, **clean up** safely, and
+**install Steam** with guidance. The main file,
 [`find-omarchy-bloat.sh`](find-omarchy-bloat.sh), looks at an Omarchy install
 and reports what is probably bloat: heavy preinstalled apps, Chromium web-app
 wrappers, orphaned packages and the folders eating your disk. It changes
@@ -18,14 +19,16 @@ gives you a baseline; running it again after setup shows what changed. That
 
 ## How the pieces fit
 
-- `find-omarchy-bloat.sh` — the main, read-only detector (this repo).
-- `index.html` — a browser-readable overview of the repo and the script.
+- `find-omarchy-bloat.sh` — the main, read-only detector.
+- `bar-plugin/` — the Omarchy bar widget that opens this repo's tools.
+- `debloat-omarchy.sh` — guarded, confirmed cleanup. Audit by default.
+- `install-steam.sh` — guided Steam install plus ProtonPlus guidance.
+- `omarchy-essentials.sh` — catalog of useful apps and plugins; lists by default.
+- `index.html` — a browser-readable overview.
 - `README.md` — the quick-start and file map.
-- Cleanup is intentionally a **separate, opt-in** tool, not something this
-  script does freely. The companion
-  [omababy](https://github.com/TopGoy333/omababy) repo has
-  `debloat-omarchy.sh`, which removes only what you name, asks first, and
-  protects the apps people rely on.
+
+Cleanup is intentionally **separate and opt-in**, not something the detector
+does freely. Nothing here runs without your say-so.
 
 ## What is coming next
 
@@ -39,7 +42,7 @@ gives you a baseline; running it again after setup shows what changed. That
 
 - The detector is read-only.
 - Nothing with secret keys is published.
-- Every removal step elsewhere is explicit and confirmed.
+- Every removal step is explicit and confirmed.
 
 ## Detection accuracy
 
