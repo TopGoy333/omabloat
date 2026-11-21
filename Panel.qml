@@ -28,11 +28,13 @@ Panel {
   function runAudit() { runInTerminal("debloat-omarchy.sh", "--audit") }
   function runSteamCheck() { runInTerminal("install-steam.sh", "--check") }
 
+  // Icons come from the Nerd Fonts set the bar already uses (JetBrainsMono
+  // Nerd Font), so they render like every other Omarchy widget.
   readonly property var actions: [
-    { label: "Scan for bloat (read-only)", hint: "First-and-last detector", run: runScan },
-    { label: "Show disk space per candidate", hint: "Adds sizes to the report", run: runSpaceScan },
-    { label: "Debloat audit (read-only)", hint: "What cleanup could reclaim", run: runAudit },
-    { label: "Steam status (read-only)", hint: "Check before installing", run: runSteamCheck }
+    { label: "Scan for bloat (read-only)", hint: "First-and-last detector", icon: "\uf0349", run: runScan },
+    { label: "Show disk space per candidate", hint: "Adds sizes to the report", icon: "\uf02ca", run: runSpaceScan },
+    { label: "Debloat audit (read-only)", hint: "What cleanup could reclaim", icon: "\uf0a38", run: runAudit },
+    { label: "Steam status (read-only)", hint: "Check before installing", icon: "\uf1b6", run: runSteamCheck }
   ]
 
   KeyboardPanel {
@@ -93,7 +95,7 @@ Panel {
 
               PanelActionButton {
                 id: actionButton
-                iconText: ""
+                iconText: modelData.icon
                 tooltipText: modelData.label
                 onClicked: modelData.run()
               }

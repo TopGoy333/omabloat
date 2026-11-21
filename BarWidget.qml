@@ -56,7 +56,7 @@ BarWidget {
     id: button
     anchors.fill: parent
     bar: root.bar
-    text: "󰃟"
+    text: "\uf00e2"
     tooltipText: "Omabloat — find bloat (read-only)"
     onPressed: function(b) {
       if (b === Qt.RightButton) {
