@@ -20,7 +20,7 @@ gives you a baseline; running it again after setup shows what changed. That
 ## How the pieces fit
 
 - `find-omarchy-bloat.sh` — the main, read-only detector.
-- `bar-plugin/` — the Omarchy bar widget that opens this repo's tools.
+- `manifest.json`, `BarWidget.qml`, `Panel.qml` — the Omarchy bar widget.
 - `debloat-omarchy.sh` — guarded, confirmed cleanup. Audit by default.
 - `install-steam.sh` — guided Steam install plus ProtonPlus guidance.
 - `omarchy-essentials.sh` — catalog of useful apps and plugins; lists by default.

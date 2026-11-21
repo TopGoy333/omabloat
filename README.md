@@ -13,8 +13,8 @@ One repo, three jobs:
 | Install Steam | [`install-steam.sh`](install-steam.sh) | Guided Steam setup with ProtonPlus guidance. |
 | Extras | [`omarchy-essentials.sh`](omarchy-essentials.sh) | Useful-apps catalog; lists by default. |
 
-The bar button lives in [`bar-plugin/`](bar-plugin/) and runs the detector in
-your terminal.
+The bar button is this repo itself: `manifest.json`, `BarWidget.qml`, and
+`Panel.qml` live at the root, so installing the plugin installs the scripts too.
 
 ## Quick start
 
@@ -35,8 +35,8 @@ step: run it before you add apps, and again after you finish.
 omarchy plugin add https://github.com/TopGoy333/omabloat --enable
 ```
 
-That installs `topgoy333.omabloat` from this repo's `bar-plugin/` folder. Click
-the bar icon to open the panel, then run the scan in a terminal.
+That installs `topgoy333.omabloat` (this repo). Click the bar icon to open the
+panel, then run the scan in your terminal.
 
 Move it if you like:
 

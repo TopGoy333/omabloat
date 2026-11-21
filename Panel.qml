@@ -6,6 +6,8 @@ import qs.Ui
 
 // The popup behind the bar button. Content is a small list of actions; each
 // one opens the matching script in the user's terminal.
+//
+// The scripts live in the same folder as this file (the repo root).
 Panel {
   id: root
   moduleName: "topgoy333.omabloat"
@@ -14,7 +16,7 @@ Panel {
   property var anchorItem: null
   property var hostWidget: null
   readonly property var barIdentity: hostWidget || root
-  readonly property string repoDir: Qt.resolvedUrl("..").toString().replace(/^(qs|file):\/\//, "")
+  readonly property string repoDir: Qt.resolvedUrl(".").toString().replace(/^(qs|file):\/\//, "")
 
   function runInTerminal(script, args) {
     var cmd = "cd \"" + root.repoDir + "\" && ./" + script + " " + args
