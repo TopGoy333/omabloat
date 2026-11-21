@@ -47,8 +47,15 @@ step: run it before you add apps, and again after you finish.
 omarchy plugin add https://github.com/TopGoy333/omabloat --enable
 ```
 
-That installs `topgoy333.omabloat` (this repo). Click the bar icon to open the
-panel, then run the scan in your terminal.
+That installs `topgoy333.omabloat` (this repo). Click the broom icon in the
+bar to open the panel:
+
+- **omababy** — the two original tools: *Find bloat* (read-only scan) and
+  *Install Steam* (guided, asks first).
+- **More tools** — disk space report, debloat audit, and the essentials catalog.
+
+Each row opens your terminal and runs that script. The terminal stays open so
+you can read the output.
 
 Move it if you like:
 

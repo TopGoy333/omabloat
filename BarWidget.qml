@@ -4,8 +4,8 @@ import Quickshell.Io
 import qs.Commons
 import qs.Ui
 
-// Bar button for omabloat. The scan is a terminal script, so the panel
-// explains what it does and runs it in the user's terminal through
+// Bar button for omabloat. The tools are terminal scripts, so the panel
+// explains what each one does and runs it in the user's terminal through
 // xdg-terminal-exec — the same launcher Omarchy's own menu uses.
 //
 // This widget lives at the repo root so `omarchy plugin add <repo>` installs
@@ -15,8 +15,6 @@ BarWidget {
   moduleName: "topgoy333.omabloat"
 
   property var panelImpl: null
-  // Repo root == this plugin folder.
-  readonly property string repoDir: Qt.resolvedUrl(".").toString().replace(/^(qs|file):\/\//, "")
 
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
@@ -33,12 +31,6 @@ BarWidget {
 
   function togglePanel() {
     if (panelImpl && typeof panelImpl.toggle === "function") panelImpl.toggle()
-  }
-
-  function runInTerminal(script, args) {
-    var dir = root.repoDir
-    var cmd = "cd \"" + dir + "\" && ./" + script + " " + args
-    Quickshell.execDetached(["xdg-terminal-exec", "bash", "-lc", cmd])
   }
 
   Loader {
