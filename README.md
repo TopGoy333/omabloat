@@ -16,6 +16,18 @@ One repo, three jobs:
 The bar button is this repo itself: `manifest.json`, `BarWidget.qml`, and
 `Panel.qml` live at the root, so installing the plugin installs the scripts too.
 
+## What's new in v1.0.0
+
+- **One repo.** The old `omababy` repo is now part of `omabloat`.
+  `github.com/TopGoy333/omababy` and `github.com/TopGoy333/omablota` both
+  redirect here.
+- **Bar button.** `omarchy plugin add https://github.com/TopGoy333/omabloat --enable`
+  puts a broom icon in the bar that opens the tools.
+- **Fixed install.** The old manifest claimed a plugin kind this Omarchy
+  version does not support, so the plugin never actually installed. It is now
+  a real `bar-widget` at the repo root, validated with `omarchy plugin validate`.
+- **Cleaner logs.** Debloat plans are written to `~/.local/share/omabloat/`.
+
 ## Quick start
 
 ```bash
