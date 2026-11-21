@@ -1,78 +1,45 @@
-# Uninstall Omabloat Plugin
+# Uninstall Omabloat
 
-This guide shows you how to completely remove the Omabloat plugin from your Omarchy system.
+Omabloat is an Omarchy shell plugin (`topgoy333.omabloat`) plus a set of
+standalone scripts. Remove the bar widget, the scripts, or both.
 
-## Quick Remove (Recommended)
-
-Run this single command in your terminal:
-
-```bash
-sudo omarchy plugin uninstall topgoy333.omabloat
-```
-
-This will:
-- Remove the plugin files from `/home/jimmyk/.config/omarchy/plugins/topgoy333.omabloat/`
-- Clean up any configuration files created during installation
-- Leave your system completely clean with no traces left behind
-
-## Manual Removal (If Quick Method Fails)
-
-If you prefer to remove the plugin manually, or if the quick method doesn't work:
-
-### Step 1: Remove Plugin Files
+## Remove the bar widget
 
 ```bash
-sudo rm -rf ~/.config/omarchy/plugins/topgoy333.omabloat/
+omarchy plugin remove topgoy333.omabloat --yes
 ```
 
-This removes all plugin files including your scripts, configuration, and any cached data.
+That removes the plugin folder (the widget and its panel) and takes the bar
+icon with it.
 
-### Step 2: Clean Up Configuration (Optional)
+## Remove the scripts too
 
-If you created any custom configurations during use:
+The plugin folder is the whole repo, so removing the plugin removes the scripts
+as well. If you kept a separate clone, delete it:
 
 ```bash
-# Remove any Omabloat-specific configs in your home directory
-rm -f ~/.omarchy-omabloat/*
+rm -rf ~/omabloat
 ```
 
-### Step 3: Verify Removal
-
-Check that the plugin is gone:
+## Verify
 
 ```bash
-ls ~/.config/omarchy/plugins/
-# You should NOT see 'topgoy333.omabloat' in this list
-
-# Also verify it's not available anymore
-omarchy plugin list | grep -i omabloat
-# Should return nothing
+omarchy plugin list | grep -i omabloat                 # should print nothing
+ls ~/.config/omarchy/plugins/ | grep -i omabloat       # should print nothing
 ```
 
-## What Gets Removed
+## Leftovers worth knowing about
 
-- **Plugin files**: All scripts (`find-omarchy-bloat.sh`, `install-steam.sh`, etc.)
-- **Configuration files**: Any settings or configs created during installation
-- **Documentation**: README, manifest.json, uninstall.md, and other docs
-- **Cached data**: Any temporary files or databases the plugin created
+- Debloat logs live in `~/.local/share/omabloat/` and are harmless to keep.
+  Delete them with `rm -rf ~/.local/share/omabloat`.
+- Nothing else is written outside the plugin folder and that log directory.
 
-## Important Notes
-
-⚠️ **Your system is safe** — Omabloat only modifies user-level configuration, not system-critical files. Removing it won't affect your installed applications or system stability.
-
-⚠️ **Steam games are NOT affected** — This plugin only helps with Steam installation and doesn't modify any game files. Your games will remain intact.
-
-## After Uninstall
-
-Once removed, you can reinstall the plugin anytime by running:
+## Reinstall
 
 ```bash
-cd /home/jimmyk/git
-sudo omarchy plugin install topgoy333.omabloat
+omarchy plugin add https://github.com/TopGoy333/omabloat --enable
 ```
-
-Or simply clone this repository again and run the setup scripts.
 
 ---
 
-*Made with ❤️ for the Omarchy community. If you found this guide helpful, consider starring the repo!* 😄
+*Made with ❤️ for the Omarchy community.*
